@@ -21,6 +21,7 @@ public class Car
      */
     private double fuelEfficiency; // in units of mpg
     private double fuelInTank; // in units of gallons
+    private String vin; // vehicle identification number
     
     /*
      * Constructor:
@@ -37,9 +38,15 @@ public class Car
      *      Inizializes the fuel efficiency to 30 mpg and the fuel in this
      *          car's tank to 0 gallons
      */
-    
     public Car()
     {
+        /*
+         * the "this" reserved word references the current object
+         *  Its usage is encouraged but usually not required
+         */
+        this.fuelEfficiency = 30;
+        this.fuelInTank = 0;
+        this.vin = "";
     }
     
     /**
@@ -50,6 +57,19 @@ public class Car
      */
     public Car(double initialEfficiency)
     {
+        /*
+         * If the parameter was named fuelEfficiency, it would shadow the
+         *      instance variable fuelEfficiency.
+         * Local and parameter variables "shadow" instance variables of the same
+         *      name. In this code, fuelEfficiency would refer to the parameter
+         *      and not the instance variable
+         * To refer explicitly to an instance variable, use "this"
+         * Advice: avoid this issue by giving parameters and local variables
+         *      unique names
+         */
+        this.fuelEfficiency = initialEfficiency;
+        this.fuelInTank = 0;
+        this.vin = "";
     }
     
     /*
@@ -67,6 +87,8 @@ public class Car
      */
     public void drive(double distance)
     {
+        double fuelConsumed = distance / this.fuelEfficiency;
+        this.fuelInTank -= fuelConsumed;
     }
     
     /**
@@ -76,6 +98,7 @@ public class Car
      */
     public void addFuel(double amount)
     {
+        this.fuelInTank += amount;
     }
     
     /**
@@ -85,6 +108,26 @@ public class Car
      */
     public double getFuelInTank()
     {
-        return 0;
+        return this.fuelInTank;
+    }
+    
+    /**
+     * Returns the VIN of this car 
+     * 
+     * @return the VIN of this car
+     */
+    public String getVIN()
+    {
+        return "";
+    }
+    
+    /**
+     * Sets the VIN of this car
+     * 
+     * @param   newVIN    the VIN of this car
+     */
+    public void setVIN(String newVIN)
+    {
+        
     }
 }

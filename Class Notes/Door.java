@@ -1,21 +1,22 @@
 public class Door
 {
-    private String front;
-    private String side;
-    public boolean state;
+    private boolean isOpened;
     private String name;
     
-    public void open(String name)
+    public void open()
     {
-     
+        this.isOpened = true;
     }
     
-    public void close(String name)
+    public void close()
     {
+        this.isOpened = false;
     }
     
-    public Door(String name, boolean state)
+    public Door(String initialName, boolean initialIsOpened)
     {
+        this.name = initialName;
+        this.isOpened = initialIsOpened;
     }
     
     public String getName()
@@ -23,9 +24,9 @@ public class Door
         return this.name;
     }
     
-    public boolean getState(String name)
+    public boolean getState()
     {
-        return this.state;
+        return this.isOpened;
     }
     
     public void setName(String newName)
@@ -33,7 +34,12 @@ public class Door
         this.name = newName;
     }
     
-    Door door = new Door(front, false);
+    public static void main()
+    {
+        Door myDoor = new Door("front", true);
+    }
+    
+    
    
     
 }

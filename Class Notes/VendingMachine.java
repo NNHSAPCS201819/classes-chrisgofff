@@ -15,5 +15,11 @@ public class VendingMachine
         this.tokens = initialTokens;
     }
     
+    public int getCanCount()
+    {
+        return cans;
+    }
+    
+    
     
 }

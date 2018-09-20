@@ -9,10 +9,16 @@ public class VendingMachine
         this.tokens = (tokens + number);
     }
     
-    public VendingMachine(int initialCans, int initialTokens)
+    public void VendingMachine()
+    {
+        this.cans = 10;
+        this.tokens = 0;
+    }
+    
+    public VendingMachine(int initialCans)
     {
         this.cans = initialCans;
-        this.tokens = initialTokens;
+        this.tokens = 0;
     }
     
     public int getCanCount()
@@ -20,6 +26,9 @@ public class VendingMachine
         return cans;
     }
     
-    
+    public int getTokenCount()
+    {
+        return tokens;
+    }
     
 }

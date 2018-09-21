@@ -10,6 +10,9 @@ public class TargetViewer
         frame.setTitle("Targets");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        TargetComponent component = new TargetComponent();
+        frame.add(component);
         
+        frame.setVisible(true);
     }
 }

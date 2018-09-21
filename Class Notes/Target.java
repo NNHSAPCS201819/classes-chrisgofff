@@ -1,4 +1,5 @@
 import java.awt.geom.Ellipse2D;
+import java.awt.Graphics2D;
 /**
  * Write a description of class Target here.
  *
@@ -7,7 +8,8 @@ import java.awt.geom.Ellipse2D;
  */
 public class Target
 {
-   public void Target()
+   
+   public Target()
    {
        
    }

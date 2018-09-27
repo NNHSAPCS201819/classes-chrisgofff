@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 /**
- * This class encrypts strings with a keyphrase version of the classic Caesar Cipher.
+ * This class encrypts strings with a keyphrase version of the classic
+ *      Caesar Cipher.
  *      (as described in The Code Book by Simon Singh)
  *
  * @author gcschmit
@@ -9,46 +10,52 @@ import java.util.Scanner;
  */
 public class CaesarCipher
 {
+    /*
+     * static: one value for the variable for all objects of the class.
+     *      This is like class attributes in Python.
+     *      Static class variables can be accessed directly through the
+     *          class (e.g., CaesarCipher.ALPHABET, Math.PI, Color.RED).
+     */
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     public static void main(String[] args)
-    
     {
         /*
-         * A scanner object parses primitive types and Strings from a stream.
-         * 
-         * A stream is a sequence of characters from a file, String, keyboard,
-         *      network conection, etc.
+         * A scanner object parses primitive types and Strings from a
+         *      stream.
          *      
-         * Parsing is separating a sequence of characters into tokens based on 
-         *      delimiters
-         *      A token is a meaningful sequence of characters (like a word)
-         *      Delimiters are characters that separate tokens (by default, 
-         *          whitespace (space, tab, newline) is the delimiter)
-         * 
-         * When we create a Scanner object, we have to specify the input stream
-         *      (eg. System.in)
+         *  A stream is a sequence of characters from a file, String,
+         *      keyboard, network connection, etc.
+         *  
+         *  Parsing is separating a sequence of characters into tokens
+         *      based on delimiters.
+         *      A token is a meaningful sequence of characters (e.g., word).
+         *      Delimiters are characters that separate tokens (by default,
+         *          whitespace (space, tab, newline) is the delimiter).
+         *  
+         *  When we create a Scanner object, we have to specify the input
+         *      stream (e.g., System.in which is the keyboard via the
+         *      terminal).
          */
-        
         Scanner s = new Scanner(System.in);
         
         /*
-         * Best practices
+         * Best practices:
          *      1. prompt the user for what you want them to input
-         *      2. use print, not println, such that the cursor is at the end of
-         *          the prompt and not on a new line
+         *      2. use print, not println, such that the cursor is at
+         *          the end of the prompt and not on a new line
          *      3. leave a space after the prompt
          */
         System.out.print("Enter the text to encrypt: ");
         
         /*
-         * The nextLine method returns all characters up to the end of the line
-         *      (i.e. where the user typed enter).
+         * The nextLine method returns all characters up to the end of the
+         *      line (i.e., where the user typed enter).
          */
         String text = s.nextLine();
         text = text.toUpperCase();
         
-        System.out.print("Enter the keyphrase (no space): ");
+        System.out.print("Enter the keyphrase (no spaces): ");
         
         /*
          * The next method returns the next token in the stream as a String
@@ -56,17 +63,168 @@ public class CaesarCipher
         String passphrase = s.next();
         passphrase = passphrase.toUpperCase();
         
-        System.out.print("Enter the # of seconds to test a guessed keyphrase: ");
+        System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
         
         /*
-         * The nextInt method attempts to convert the next token in the stream
-         *      to an int and return the value. If the next token cannot be 
-         *      converted, an exception is generated.
-         *      
-         * The nextDouble method behaves the same way for doubles
+         * The nextInt method attempts to convert the next token in the
+         *      stream to an int and return the value. If the next token
+         *      cannot be converted, an exception is generated.
+         *  
+         *  The nextDouble method behaves in the same way for doubles.
          */
         int secondsPerGuess = s.nextInt();
         
+    }
+    
+    
+    /**
+     * Formats the average time to crack the cipher based on the
+     *      specified number of seconds and displays via System.out
+     *      in several formats.
+     *  
+     *  @param  totalSeconds    the average number of seconds to crack
+     *                          the cipher
+     */
+    public static void printAverageTimeToCrack(long totalSeconds)
+    {
+        /*
+         * Instead of using a "magic number" (e.g., 3.14159), use
+         *      constants defined by us or the Java Standard Library.
+         *  
+         *  For example, in the Math class is defined:
+         *  
+         *      public static final double PI = 3.141592654;
+         *  
+         *  Declare a constant with the final keyword.
+         *      By convention, constants are in all caps with underscores.
+         */
+        final int SECONDS_FOR_EVERY_MINUTE = 60;
+        final int MINUTES_FOR_EVERY_HOUR = 60;
+        final int HOURS_FOR_EVERY_DAY = 24;
+        final int DAYS_FOR_EVERY_YEAR = 365;
+        
+        /*
+         * If we try to change the value, a compiler error will be
+         *      generated.
+         */
+        //SECONDS_FOR_EVERY_MINUTE = 30;
+        
+        /*
+         * Use integer division to calculate how many whole minutes based
+         *      on the specified number of seconds.
+         *  
+         *  Integer division (like // operator in Python) discards the
+         *      remainder (truncates).
+         *  
+         *  Java does integer division when both operands are integers;
+         *      floating-point division when one or both operands are
+         *      floating-point numbers.
+         *  
+         *  For example:
+         *      3 / 4 = 0       (3 and 4 are int literals)
+         *      3.0 / 4 = 0.75  (3.0 is a double literal)
+         */
+        long totalMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
+        
+        /*
+         * Use the modulo (mod, remainder) operator to calculate how
+         *      many seconds remain.
+         *  
+         *  The mod operator (%) returns the remainder of the division
+         *      operation.
+         *  
+         *  It can be very useful when paired with integer division.
+         *  
+         *  For example:
+         *      7 % 2 = 1
+         *      11 % 3 = 2
+         *      6 % 2 = 0
+         *      4 % 11 = 4
+         *  
+         *  % 2 is frequently used to test odd/even (odd => 1; even => 0)
+         */
+        long seconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        
+        long totalHours = totalMinutes / MINUTES_FOR_EVERY_HOUR;
+        long minutes = totalMinutes % MINUTES_FOR_EVERY_HOUR;
+        
+        long totalDays = totalHours / HOURS_FOR_EVERY_DAY;
+        long hours = totalHours % HOURS_FOR_EVERY_DAY;
+        
+        long years = totalDays / DAYS_FOR_EVERY_YEAR;
+        long days = totalDays % DAYS_FOR_EVERY_YEAR;
+        
+        System.out.println("Average time to crack: " + years + " years, " +
+                days + " days, " + hours + " hours, " + minutes +
+                " minutes, " + seconds + " seconds");
+                
+        /*
+         * A conversion is when a data value is converted from one type to 
+         *      another
+         *      
+         * Widening: preserves information (eg. int to double, int to long)
+         * Narrowing: lossy; may lose information (eg. double to int)
+         * 
+         * Java only automatically performs widening conversions.
+         * 
+         * This is a widening conversion (long to a double)
+         * 
+         */
+        double yearsAsDecimal = totalSeconds;
+        
+        /*
+         * Arithmetic Promotion
+         * 
+         *  If the two operands are of different types, Java attempts to promote
+         *          one of the types (widening conversion) and then performs
+         *          the operation
+         *          
+         * In this case, both SECONDS_FOR_EVERY_MINUTE and 
+         *      MINUTES_FOR_EVERY_HOUR are ints; so Java doesn't perform any
+         *      promotion and instead performs the multiplication
+         *      and stores the result as an int. Only after all three 
+         *      multiplications does Java promote the int value of the
+         *      resulting product to a long and then assign it to 
+         *      SECONDS_FOR_EVERY_YEAR
+         *      
+         *      This promotion may be too late! If the multiplication overflows
+         *      an int, the wrong value will be promoted to a long and stored
+         */
+        
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * 
+                MINUTES_FOR_EVERY_HOUR * HOURS_FOR_EVERY_DAY *
+                DAYS_FOR_EVERY_YEAR;
+                
+        /*
+         * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to
+         *      a double and then floating point division is performed and 
+         *      assigned to yearsAsDecimal
+         *      
+         * The local variable SECONDS_FOR_EVERY_YEAR is still a long and still 
+         *      has the same value
+         */
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        
+        System.out.println("or " + yearsAsDecimal + " years");
+        
+        /*
+         * To force a narrowing conversion, us the cast operator. A cast is 
+         *      the "I know what I'm doing; trust me" conversion
+         *      
+         * (int)(84.69) => truncates to an int (84)
+         * 
+         * If we want to round a double to the nearest int value, we use the
+         *      Math.round method:
+         *      
+         *      public static long round(double value)
+         *      public stativ int round(float value)
+         *      
+         * The following divides yearsAsDecimal by 10, then rounds the resulting
+         *      double value to the nearest decade, and then casts the resulting
+         *      long to an int.
+         */
+        int decades = (int)(Math.round(yearsAsDecimal / 10));
+        System.out.println("or about " + decades + " decades");
     }
     
     /**

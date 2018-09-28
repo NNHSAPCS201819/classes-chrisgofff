@@ -74,6 +74,20 @@ public class CaesarCipher
          */
         int secondsPerGuess = s.nextInt();
         
+        
+        
+        
+        /*
+         * The Math.random static method returns a double [0.0....1.0]
+         * 
+         * Often we use the following algorithm to generate a random integer
+         *      for min (inclusive) to max (inclusive)
+         *      
+         *      int n = (int)((Math.random() * (max - min +1)) + min);
+         *      
+         * For example: generate a random int [1 ... 26]
+         */
+        int letterIndex = (int)((Math.random() * 26) + 1);
     }
     
     
@@ -81,6 +95,12 @@ public class CaesarCipher
      * Formats the average time to crack the cipher based on the
      *      specified number of seconds and displays via System.out
      *      in several formats.
+     *  
+     *  This method is static and, therfore, is independent of the state of a 
+     *       CaeserCipher object. As a result, this method may be invoked on the
+     *       class instead of a variable that references an object 
+     *       (eg. CaesarCipher.printAverageTimeToCrack(1000000L);)
+     *       In addition, this method cannot access any instance variables
      *  
      *  @param  totalSeconds    the average number of seconds to crack
      *                          the cipher

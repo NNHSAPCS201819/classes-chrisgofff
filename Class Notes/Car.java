@@ -130,4 +130,29 @@ public class Car
     {
         
     }
+    
+    /**
+     * Returns a string that describes the state of this car
+     * 
+     * @return Returns a string that describes the state of this car
+     */
+    public String toString()
+    {
+        String str = "VIN: " + this.getVIN() + "fuel efficiency: " +
+                this.fuelEfficiency + " mpg; fuel in tank: " + 
+                this.getFuelInTank() + " gallons";
+        return str;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

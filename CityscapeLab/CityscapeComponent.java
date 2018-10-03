@@ -25,6 +25,7 @@ public class CityscapeComponent extends JComponent
      * It does not need to be invoked explicitly.
      *
      */
+    @Override
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;

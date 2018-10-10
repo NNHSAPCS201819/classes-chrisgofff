@@ -15,17 +15,26 @@ public class CityscapeComponent extends JComponent
     // define the objects in your Cityscape as instance variables
     // ...
     private House home;
+    private House home2;
     private Sun sunny;
     private Cloud cloud1;
-    //private Cloud cloud2;
+    private Road mainStreet;
+    private Grass frontYard;
+    private Sky atmosphere;
+    private Cloud cloud2;
     
     // define the CityscapeComponent contructor and intiailize all instance variables
     // ...
     public CityscapeComponent()
     {
-        this.home = new House(200, 400, Color.BLUE);
-        this.sunny = new Sun(700, 100);
+        this.home = new House(200, 400, Color.DARK_GRAY, Color.RED);
+        this.home2 = new House(700, 400, Color.MAGENTA, Color.BLACK);
+        this.sunny = new Sun(500, 100);
         this.cloud1 = new Cloud(200, 100);
+        this.mainStreet = new Road(0, 675);
+        this.frontYard = new Grass(0, 500);
+        this.atmosphere = new Sky(0, 0, Color.BLUE);
+        this.cloud2 = new Cloud(650, 150);
     }
     
     /**
@@ -40,9 +49,14 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
+        atmosphere.draw(g2);
+        frontYard.draw(g2);
         home.draw(g2);
+        home2.draw(g2);
         sunny.draw(g2);
         cloud1.draw(g2);
+        cloud2.draw(g2);
+        mainStreet.draw(g2);
     }
     
     /**

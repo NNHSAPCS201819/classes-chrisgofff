@@ -1,4 +1,6 @@
-
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 /**
  * Write a description of class Road here.
  *
@@ -7,26 +9,20 @@
  */
 public class Road
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Road
-     */
-    public Road()
+    private int xLeft;
+    private int yTop;
+    
+    public Road(int x, int y)
     {
-       
+        this.xLeft = x;
+        this.yTop = y;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public void draw(Graphics2D g2)
     {
-        // put your code here
-        return x + y;
+        Rectangle2D.Double street = new Rectangle2D.Double(xLeft, yTop, 1000, 100);
+        g2.setColor(Color.BLACK);
+        g2.fill(street);
+        g2.draw(street);
     }
 }

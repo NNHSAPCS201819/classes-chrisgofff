@@ -7,14 +7,14 @@ public class House
     private int yTop;
     private int xLeft;
     private Color houseColor;
-    //private Color roofColor;
+    private Color roofColor;
     
-    public House(int x, int y, Color inHouseColor)
+    public House(int x, int y, Color inHouseColor, Color inRoofColor)
     {
         this.xLeft = x;
         this.yTop = y;
-        houseColor = inHouseColor;
-        //roofColor = inRoofColor;
+        this.houseColor = inHouseColor;
+        this.roofColor = inRoofColor;
     }
     
     public void draw(Graphics2D g2)
@@ -43,7 +43,7 @@ public class House
         roof.addPoint(xLeft, yTop);
         roof.addPoint(xLeft + 200, yTop);
         roof.addPoint(xLeft + 100, yTop - 100);
-        g2.setColor(Color.BLACK);
+        g2.setColor(roofColor);
         g2.fill(roof);
         g2.draw(roof);
         

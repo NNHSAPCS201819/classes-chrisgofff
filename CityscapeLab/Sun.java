@@ -25,4 +25,9 @@ public class Sun
         g2.fill(sun);
         g2.draw(sun);
     }
+    
+    public void animate()
+    {
+        yTop = yTop + 10;
+    }
 }

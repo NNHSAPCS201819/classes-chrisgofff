@@ -24,5 +24,10 @@ public class Road
         g2.setColor(Color.BLACK);
         g2.fill(street);
         g2.draw(street);
+        
+        Rectangle2D.Double divider = new Rectangle2D.Double(xLeft, yTop + 47, 1000, 6);
+        g2.setColor(Color.YELLOW);
+        g2.fill(divider);
+        g2.draw(divider);
     }
 }

@@ -25,6 +25,7 @@ public class CityscapeComponent extends JComponent
     
     // define the CityscapeComponent contructor and intiailize all instance variables
     // ...
+    Color earlySky = new Color(30,144,255);
     public CityscapeComponent()
     {
         this.home = new House(200, 400, Color.DARK_GRAY, Color.RED);
@@ -33,7 +34,7 @@ public class CityscapeComponent extends JComponent
         this.cloud1 = new Cloud(200, 100);
         this.mainStreet = new Road(0, 675);
         this.frontYard = new Grass(0, 500);
-        this.atmosphere = new Sky(0, 0, Color.BLUE);
+        this.atmosphere = new Sky(0, 0, earlySky);
         this.cloud2 = new Cloud(650, 150);
     }
     
@@ -50,10 +51,10 @@ public class CityscapeComponent extends JComponent
         // invoke the draw method on each object in your Cityscape
         // ...
         atmosphere.draw(g2);
+        sunny.draw(g2);
         frontYard.draw(g2);
         home.draw(g2);
         home2.draw(g2);
-        sunny.draw(g2);
         cloud1.draw(g2);
         cloud2.draw(g2);
         mainStreet.draw(g2);
@@ -67,6 +68,7 @@ public class CityscapeComponent extends JComponent
     {
         // update the objects in the cityscape so they are animated
         // ...
+        sunny.animate();
         
         
         
@@ -74,5 +76,10 @@ public class CityscapeComponent extends JComponent
         //  do not explicitly invoke the paintComponent method
         repaint();
     }
-
+    
+    public void nextframe()
+    {
+        atmosphere.animate();
+        repaint();
+    }
 }

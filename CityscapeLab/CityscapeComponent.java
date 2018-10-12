@@ -77,9 +77,4 @@ public class CityscapeComponent extends JComponent
         repaint();
     }
     
-    public void nextframe()
-    {
-        atmosphere.animate();
-        repaint();
-    }
 }

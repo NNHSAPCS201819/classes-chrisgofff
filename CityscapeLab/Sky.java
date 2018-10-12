@@ -38,9 +38,4 @@ public class Sky
         g2.draw(sky);
     }
     
-    public void animate()
-    {
-        
-        skyColor = nightSky;
-    }
 }

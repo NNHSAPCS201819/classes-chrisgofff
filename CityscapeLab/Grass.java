@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 /**
- * Write a description of class grass here.
+ * Creates a grass object
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -13,7 +13,7 @@ public class Grass
     private int yTop;
 
     /**
-     * Constructor for objects of class grass
+     * 
      */
     public Grass(int x, int y)
     {

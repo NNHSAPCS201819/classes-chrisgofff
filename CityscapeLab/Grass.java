@@ -2,10 +2,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 /**
- * Creates a grass object
+ * Creates some grass for your picture
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chris Goff
+ * @version 10/12/18
  */
 public class Grass
 {
@@ -13,7 +13,10 @@ public class Grass
     private int yTop;
 
     /**
+     * Constructs a new Grass object with the specified coordinates
      * 
+     * @param   x   the x coordinate for the top left of the object
+     * @param   y   the y coordinate for the top left of the object
      */
     public Grass(int x, int y)
     {
@@ -22,10 +25,7 @@ public class Grass
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Defines what the Grass object looks like using the instance variables
      */
     public void draw(Graphics2D g2)
     {

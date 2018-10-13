@@ -2,10 +2,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 /**
- * Write a description of class Sky here.
+ * Creates a sky for your picture
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chris Goff
+ * @version 10/12/18
  */
 public class Sky
 {
@@ -14,7 +14,11 @@ public class Sky
     private Color skyColor;
     
     /**
-     * Constructor for objects of class Sky
+     * Constructs a new Sky object with the specified coordinates and color
+     * 
+     * @param   x   the x coordinate for the top left of the object
+     * @param   y   the y coordinate for the top left of the object
+     * @param   Color   the color of the sky
      */
     public Sky(int x, int y, Color color)
     {
@@ -23,12 +27,9 @@ public class Sky
         this.skyColor = color;
     }
     Color earlySky = new Color(30,144,255);
-    Color nightSky = new Color(25,25,112);
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Defines what the Sky object looks like using the instance variables
      */
     public void draw(Graphics2D g2)
     {

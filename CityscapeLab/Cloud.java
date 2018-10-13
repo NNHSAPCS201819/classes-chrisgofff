@@ -4,22 +4,29 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 /**
- * Write a description of class Cloud here.
+ * Creates a cloud for your picture
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Chris Goff
+ * @version 10/12/18
  */
 public class Cloud
 {
     private int xLeft;
     private int yTop;
-    
+    /**
+     * Constructs a new Cloud object with the specified coordinates
+     * 
+     * @param   x   the x coordinate for the top left of the object
+     * @param   y   the y coordinate for the top left of the object
+     */
     public Cloud(int x, int y)
     {
      this.xLeft = x;
      this.yTop = y;
     }
-    
+    /**
+     * Defines what the Cloud object looks like using the instance variables
+     */
     public void draw(Graphics2D g2)
     {
         Ellipse2D part1 = new Ellipse2D.Double(xLeft, yTop, 90, 90);
